@@ -1,9 +1,9 @@
-import {ExpressMiddleware, Middleware, NestMiddleware} from "@nestjs/common";
+import {Injectable, MiddlewareFunction, NestMiddleware} from "@nestjs/common";
 
-@Middleware()
+@Injectable()
 export class LogMiddleware implements NestMiddleware {
 
-    resolve(nombreAplicacion: string, anio: number): ExpressMiddleware {
+    resolve(nombreAplicacion: string, anio: number): MiddlewareFunction {
         return (request, response, next) => {
             const respuesta = {
                 baseUrl: request.baseUrl,
